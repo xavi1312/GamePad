@@ -1,10 +1,13 @@
+body{
+    --wArale: 100px;
+    --hArale: calc(var(--wArale) + 40px );
+}
 .item{
     position: absolute;
     top:200px;
     left:200px;
-    width: 200px;
-    height: 240px;
-    border-color: 1px salid red;
+    width: var(--wArale);
+    height: var(--hArale);
     background-image: url(./imatges/Arale_Artwork.png);
     background-repeat: no-repeat;
     background-size: cover;
