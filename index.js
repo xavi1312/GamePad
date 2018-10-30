@@ -34,25 +34,25 @@ function gamePad(){
     }
 
 
-    if(eix[0] > 0.5){ //derecha
+    if(eix[0] > 0.5 || eix[2] > 0.5){ //derecha
         if(x < window.innerWidth -200){
             x = x + mou;
             bola.style.left = x + "px";
         }
     }
-    if(eix[0] < -0.5){//izquierda
+    if(eix[0] < -0.5 || eix[2] < -0.5){//izquierda
         if(x > 0){
             x = x - mou;
             bola.style.left = x + "px";
         }
     }
-    if(eix[1] > 0.5){//abajo
+    if(eix[1] > 0.5 || eix[3] > 0.5){//abajo
         if(y < 400){
         y = y + mou;
         bola.style.top = y + "px";
         }
     }
-    if(eix[1] < -0.5){//arriba
+    if(eix[1] < -0.5 || eix[3] < -0.5){//arriba
         if(y > 0){
         y = y - mou;
         bola.style.top = y + "px";
