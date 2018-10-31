@@ -1,7 +1,7 @@
 // Estat del gamepad al navegador
 var mando = navigator.getGamepads()[0];
 var eixos = mando.axes;
-// informació gamepad es mostra per consola
+  // informació gamepad es mostra per consola
 console.log("Nom: " +
 mando.id +
 " Botons: " +
@@ -9,14 +9,16 @@ mando.buttons.length +
 " Numero eixos: " +
 eixos.length)
 
-// Personatge que es mourà
-var x = 200;
-var y = 200;
+// Posicio del personatge
+var x = 0;
+var y = 0;
+// px que es desplasarà per cada moviment
 var mou = 5;
 
 var arale = document.getElementById("arale");
 var taulell = document.getElementById("taulell");
 
+// posicio del taulell
 var taulell_Left;
 var taulell_Right;
 var taulell_Top;
@@ -27,6 +29,8 @@ function gamePad() {
   mando = navigator.getGamepads()[0];
   var botons = mando.buttons;
   var eix = mando.axes;
+
+  // botons de la craueta ( no comproba que no sorti dels limits)
   if (botons[13].pressed) {
     x += mou;
     arale.style.top = x + "px";
@@ -44,6 +48,7 @@ function gamePad() {
     arale.style.left = y + "px";
   }
 
+  //  moviment joystick (comprova que no passi dels limits)
   if (eix[0] > 0.5) {
     //derecha
     if (x < taulell_Right) {
@@ -74,11 +79,14 @@ function gamePad() {
   }
 }
 function midaArale() {
+  // 
   var btn_Creixer = mando.buttons[3];
   var btn_Decreixer = mando.buttons[0];
 
   if (btn_Creixer.pressed) {
+    // mida màxima de l'arale
     if (arale.clientWidth < 100) {
+      // modificacio de les variables css
       arale.style.setProperty("--wArale", arale.clientWidth + 5 + "px");
       arale.style.setProperty(
         "--hArale",
@@ -88,6 +96,7 @@ function midaArale() {
   }
 
   if (btn_Decreixer.pressed) {
+    // mida mínima
     if (arale.clientWidth > 70) {
       arale.style.setProperty("--wArale", arale.clientWidth - 5 + "px");
       arale.style.setProperty(
@@ -99,6 +108,8 @@ function midaArale() {
 
   posTaulell();
 }
+
+// els límits que pot arribar l'arale
 function posTaulell() {
   var border = 32;
   taulell_Left = taulell.offsetLeft + border;
