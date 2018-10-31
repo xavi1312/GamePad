@@ -1,16 +1,14 @@
 // Estat del gamepad al navegador
 var mando = navigator.getGamepads()[0];
-/*var eixos = mando.axes;
-var info = document.getElementById("info-gamepad");
-var text = document.createTextNode(
-  "Nom: " +
-    mando.id +
-    " Botons: " +
-    mando.buttons.length +
-    " Numero eixos: " +
-    eixos.length
-);
-info.appendChild(text);*/
+var eixos = mando.axes;
+// informació gamepad es mostra per consola
+console.log("Nom: " +
+mando.id +
+" Botons: " +
+mando.buttons.length +
+" Numero eixos: " +
+eixos.length)
+
 // Personatge que es mourà
 var x = 200;
 var y = 200;
