@@ -16,6 +16,7 @@ function gamePad(){
     mando = navigator.getGamepads()[0];
     var botons = mando.buttons;
     var eix = mando.axes;
+
     if(botons[13].pressed == true){
         x +=mou;
         bola.style.top = x+"px";
@@ -58,6 +59,15 @@ function gamePad(){
         bola.style.top = y + "px";
         }
     }
+    var amplada = bola.innerWidth;
+    
+    if(botons[0].pressed){
+        amplada+=15+"px";
+    }
+    if(botons[1].pressed){
+        alert("Fem petit");
+    }
+
 
 }
 setInterval("gamePad()",50);
