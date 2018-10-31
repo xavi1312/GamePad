@@ -80,7 +80,7 @@ function midaArale() {
   var btn_Decreixer = mando.buttons[0];
 
   if (btn_Creixer.pressed) {
-    if (arale.clientWidth < 300) {
+    if (arale.clientWidth < 100) {
       arale.style.setProperty("--wArale", arale.clientWidth + 5 + "px");
       arale.style.setProperty(
         "--hArale",
@@ -102,9 +102,10 @@ function midaArale() {
   posTaulell();
 }
 function posTaulell() {
-  taulell_Left = taulell.offsetLeft;
+  var border = 32;
+  taulell_Left = taulell.offsetLeft + border;
   taulell_Right = taulell.clientWidth + taulell_Left - arale.clientWidth;
-  taulell_Top = taulell.offsetTop;
+  taulell_Top = taulell.offsetTop + border;
   taulell_Bottom = taulell.clientHeight + taulell_Top - arale.clientHeight;
 }
 setInterval("gamePad()", 50);
