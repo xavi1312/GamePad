@@ -19,27 +19,29 @@ var mou = 5;
 var arale = document.getElementById("arale");
 var taulell = document.getElementById("taulell");
 
-var taulell_Left = taulell.offsetLeft;
-var taulell_Right = taulell.clientWidth + taulell_Left - arale.clientWidth;
-var taulell_Top = taulell.offsetTop;
-var taulell_Bottom = taulell.clientHeight + taulell_Top - arale.clientHeight;
+var taulell_Left;
+var taulell_Right;
+var taulell_Top;
+var taulell_Bottom;
+posTaulell();
+
 function gamePad() {
   mando = navigator.getGamepads()[0];
   var botons = mando.buttons;
   var eix = mando.axes;
-  if (botons[13].pressed == true) {
+  if (botons[13].pressed) {
     x += mou;
     arale.style.top = x + "px";
   }
-  if (botons[12].pressed == true) {
+  if (botons[12].pressed) {
     x -= mou;
     arale.style.top = x + "px";
   }
-  if (botons[15].pressed == true) {
+  if (botons[15].pressed) {
     y += mou;
     arale.style.left = y + "px";
   }
-  if (botons[14].pressed == true) {
+  if (botons[14].pressed) {
     y -= mou;
     arale.style.left = y + "px";
   }
@@ -73,4 +75,37 @@ function gamePad() {
     }
   }
 }
+function midaArale() {
+  var btn_Creixer = mando.buttons[3];
+  var btn_Decreixer = mando.buttons[0];
+
+  if (btn_Creixer.pressed) {
+    if (arale.clientWidth < 300) {
+      arale.style.setProperty("--wArale", arale.clientWidth + 5 + "px");
+      arale.style.setProperty(
+        "--hArale",
+        arale.clientWidth + (arale.clientWidth * 32) / 100 + "px"
+      );
+    }
+  }
+
+  if (btn_Decreixer.pressed) {
+    if (arale.clientWidth > 70) {
+      arale.style.setProperty("--wArale", arale.clientWidth - 5 + "px");
+      arale.style.setProperty(
+        "--hArale",
+        arale.clientWidth + (arale.clientWidth * 32) / 100 + "px"
+      );
+    }
+  }
+
+  posTaulell();
+}
+function posTaulell() {
+  taulell_Left = taulell.offsetLeft;
+  taulell_Right = taulell.clientWidth + taulell_Left - arale.clientWidth;
+  taulell_Top = taulell.offsetTop;
+  taulell_Bottom = taulell.clientHeight + taulell_Top - arale.clientHeight;
+}
 setInterval("gamePad()", 50);
+setInterval("midaArale()", 50);

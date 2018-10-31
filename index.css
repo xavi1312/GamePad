@@ -1,6 +1,6 @@
 body{
     --wArale: 100px;
-    --hArale: calc(var(--wArale) + (var(--wArale) * 22 /100) );
+    --hArale: calc(var(--wArale) + (var(--wArale) * 32 /100) );
     height: 100vh;
     margin: 0;
     display: flex;
